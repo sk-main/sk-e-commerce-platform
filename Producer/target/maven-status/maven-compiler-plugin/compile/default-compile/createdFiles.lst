@@ -1,0 +1,8 @@
+com\ecommerce\producer\OrderPublisher.class
+com\ecommerce\producer\RabbitConfig.class
+com\ecommerce\producer\Order.class
+com\ecommerce\producer\OrderProducer.class
+com\ecommerce\producer\CartServiceApplication.class
+com\ecommerce\producer\Item.class
+com\ecommerce\producer\JacksonConfig.class
+com\ecommerce\producer\OrderController.class
