@@ -25,6 +25,8 @@ public class OrderListener {
 
     @RabbitListener(queues = "#{@orderQueue}")
     public void processOrder(String orderJson) {
+        logger.info("Received JSON: {}", orderJson); // Log the raw JSON string
+
         try {
             // Deserialize the JSON message into an Order object
             Order order = objectMapper.readValue(orderJson, Order.class);
@@ -44,6 +46,7 @@ public class OrderListener {
 
             // Store the order in memory (or replace this with a database call)
             orderRepository.addOrder(order, shippingCost);
+            logger.info("Order stored successfully. Current storage: {}", orderRepository.getAllOrders());
 
         } catch (Exception e) {
             logger.error("Failed to process order: {}", e.getMessage(), e);

@@ -1,5 +1,6 @@
 package com.ecommerce.consumer;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.math.BigDecimal;
@@ -10,7 +11,11 @@ import java.util.List;
 public class Order {
     private String orderId;
     private String customerId;
+
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ssXXX", timezone = "UTC")
     private OffsetDateTime orderDate;
+
     private List<Item> items; // Add this field
     private double totalAmount;
     private String currency;
@@ -81,18 +86,20 @@ public class Order {
         this.shippingCost = shippingCost;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Order{" +
-//                "orderId='" + orderId + '\'' +
-//                ", customerId='" + customerId + '\'' +
-//                ", orderDate='" + orderDate + '\'' +
-//                ", status='" + status + '\'' +
-//                ", totalAmount=" + totalAmount +
-//                ", currency='" + currency + '\'' +
-//                ", shippingCost=" + shippingCost +
-//                '}';
-//    }
+    @Override
+    public String toString() {
+        return "Order{" +
+                "orderId='" + orderId + '\'' +
+                ", customerId='" + customerId + '\'' +
+                ", orderDate=" + orderDate +
+                ", items=" + items +
+                ", totalAmount=" + totalAmount +
+                ", currency='" + currency + '\'' +
+                ", status='" + status + '\'' +
+                ", shippingCost=" + shippingCost +
+                '}';
+    }
+
 
 
 }

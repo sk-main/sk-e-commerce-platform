@@ -1,6 +1,8 @@
 package com.ecommerce.producer;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,6 +22,8 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/api/orders")
 public class OrderController {
+
+    private static final Logger logger = LoggerFactory.getLogger(OrderController.class);
 
     @Autowired
     private RabbitTemplate rabbitTemplate;
@@ -67,18 +71,24 @@ public class OrderController {
                     .body(null); // Optionally, return meaningful error details
         }
         // Set validated currency
-        order.setCurrency(providedCurrency);
         order.setStatus(status);
 
+        // Optionally normalize fields
+        order.setOrderId(order.getOrderId().trim().toUpperCase());
+        order.setCustomerId(order.getCustomerId().trim());
+        order.setCurrency(order.getCurrency().trim().toUpperCase());
+
         // Recalculate totalAmount from the provided items
-        double totalAmount = 0.0;
-        for (Item item : order.getItems()) {
-            totalAmount += item.getPrice() * item.getQuantity();
-        }
+        double totalAmount = order.getItems().stream()
+                .mapToDouble(item -> item.getPrice() * item.getQuantity())
+                .sum();
         order.setTotalAmount(totalAmount);
 
         // Publish order to RabbitMQ using orderPublisher
         orderPublisher.publish(order);
+
+        // Log the creation
+        logger.info("Order created successfully: {}", order);
 
         return ResponseEntity.ok(order);
     }

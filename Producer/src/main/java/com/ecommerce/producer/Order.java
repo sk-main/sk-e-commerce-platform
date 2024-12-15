@@ -17,8 +17,8 @@ public class Order {
     @NotBlank(message = "Customer ID cannot be blank")
     private String customerId;
 
-    @NotNull(message = "Order date cannot be null")
-    private OffsetDateTime orderDate; // Keep @NotNull since this is not a primitive
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ssXXX", timezone = "UTC")
+    private OffsetDateTime orderDate;
 
     @NotEmpty(message = "Order must have at least one item")
     private List<Item> items;
@@ -91,7 +91,19 @@ public class Order {
         return orderId;
     }
 
-
+    @Override
+    public String toString() {
+        return "Order{" +
+                "orderId='" + orderId + '\'' +
+                ", customerId='" + customerId + '\'' +
+                ", orderDate=" + orderDate +
+                ", items=" + items +
+                ", totalAmount=" + totalAmount +
+                ", currency='" + currency + '\'' +
+                ", status='" + status + '\'' +
+                ", shippingCost=" + shippingCost +
+                '}';
+    }
 
 }
 

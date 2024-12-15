@@ -11,6 +11,8 @@ import java.util.Map;
 @Service
 public class OrderConsumer {
 
+    private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(OrderConsumer.class);
+
     // In-memory storage for orders (you could use a real database in a real-world app)
     private final Map<String, Order> orderDatabase = new HashMap<>();
 
@@ -31,6 +33,18 @@ public class OrderConsumer {
 
     // Method to fetch order details and shipping cost
     public Order getOrderDetails(String orderId) {
-        return orderDatabase.get(orderId);
+        logger.debug("Fetching order details for orderId: {}. Current storage: {}", orderId, OrderRepository.getOrderStorage());
+
+        // Get the OrderWithShipping object from the repository
+        OrderWithShipping orderWithShipping = OrderRepository.getOrder(orderId);
+
+        if (orderWithShipping == null) {
+            return null; // or throw an exception based on your application logic
+        }
+
+        // Extract and return the Order object
+        return orderWithShipping.getOrder();
     }
+
+
 }
