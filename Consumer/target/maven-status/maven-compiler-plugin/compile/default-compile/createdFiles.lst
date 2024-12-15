@@ -4,8 +4,8 @@ com\ecommerce\consumer\OrderRepository.class
 com\ecommerce\consumer\OrderController.class
 com\ecommerce\consumer\Order.class
 com\ecommerce\consumer\OrderListener.class
-com\ecommerce\consumer\Order$Item.class
 com\ecommerce\consumer\OrderConsumer.class
 com\ecommerce\consumer\JacksonConfig.class
 com\ecommerce\consumer\RabbitMQConfig.class
+com\ecommerce\consumer\Item.class
 com\ecommerce\consumer\OrderWithShipping.class
