@@ -3,24 +3,28 @@ FROM maven:3.9.5-eclipse-temurin-17 AS builder
 
 WORKDIR /app
 
-# First copy the parent pom.xml
+# Copy the parent POM and all module POMs
 COPY pom.xml ./
+COPY Producer/pom.xml ./Producer/pom.xml
+COPY Consumer/pom.xml ./Consumer/pom.xml
 
-# Create Producer directory and copy its pom.xml
-COPY Producer/pom.xml ./Producer/
+# Copy all source code
+COPY src ./src
+COPY Producer/src ./Producer/src
+COPY Consumer/src ./Consumer/src
 
-# Copy Producer's source code
-COPY Producer/src/ ./Producer/src/
+# Cache dependencies
+RUN mvn dependency:go-offline -f pom.xml
 
-# Build the application
-RUN mvn -f Producer/pom.xml clean package -DskipTests
+# Build the Producer module
+RUN mvn clean package -DskipTests -pl Producer -am
 
 # Stage 2: Run Producer
 FROM openjdk:17-jdk-slim
 
 WORKDIR /app
 
-# Copy the built JAR from the builder stage
+# Copy the built Producer JAR from the builder stage
 COPY --from=builder /app/Producer/target/*.jar app.jar
 
 # Expose Producer's port

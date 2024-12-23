@@ -1,8 +1,8 @@
-C:\Users\admin\IdeaProjects\sk-e-commerce-platform\Producer\src\main\java\com\ecommerce\producer\OrderPublisher.java
-C:\Users\admin\IdeaProjects\sk-e-commerce-platform\Producer\src\main\java\com\ecommerce\producer\Item.java
-C:\Users\admin\IdeaProjects\sk-e-commerce-platform\Producer\src\main\java\com\ecommerce\producer\JacksonConfig.java
-C:\Users\admin\IdeaProjects\sk-e-commerce-platform\Producer\src\main\java\com\ecommerce\producer\RabbitConfig.java
-C:\Users\admin\IdeaProjects\sk-e-commerce-platform\Producer\src\main\java\com\ecommerce\producer\OrderProducer.java
-C:\Users\admin\IdeaProjects\sk-e-commerce-platform\Producer\src\main\java\com\ecommerce\producer\CartServiceApplication.java
-C:\Users\admin\IdeaProjects\sk-e-commerce-platform\Producer\src\main\java\com\ecommerce\producer\OrderController.java
-C:\Users\admin\IdeaProjects\sk-e-commerce-platform\Producer\src\main\java\com\ecommerce\producer\Order.java
+C:\Users\shale\IdeaProjects\sk-e-commerce-platform\Producer\src\main\java\com\ecommerce\producer\CartServiceApplication.java
+C:\Users\shale\IdeaProjects\sk-e-commerce-platform\Producer\src\main\java\com\ecommerce\producer\Item.java
+C:\Users\shale\IdeaProjects\sk-e-commerce-platform\Producer\src\main\java\com\ecommerce\producer\Order.java
+C:\Users\shale\IdeaProjects\sk-e-commerce-platform\Producer\src\main\java\com\ecommerce\producer\OrderProducer.java
+C:\Users\shale\IdeaProjects\sk-e-commerce-platform\Producer\src\main\java\com\ecommerce\producer\JacksonConfig.java
+C:\Users\shale\IdeaProjects\sk-e-commerce-platform\Producer\src\main\java\com\ecommerce\producer\OrderController.java
+C:\Users\shale\IdeaProjects\sk-e-commerce-platform\Producer\src\main\java\com\ecommerce\producer\RabbitConfig.java
+C:\Users\shale\IdeaProjects\sk-e-commerce-platform\Producer\src\main\java\com\ecommerce\producer\OrderPublisher.java

@@ -16,7 +16,7 @@ public class OrderConsumer {
     // In-memory storage for orders (you could use a real database in a real-world app)
     private final Map<String, Order> orderDatabase = new HashMap<>();
 
-    @RabbitListener(queues = "orderQueue")
+    @RabbitListener(queues = "order-queue")
     public void consumeOrder(Order order) {
         if (order != null && "new".equals(order.getStatus())) {
             // Calculate shipping cost (2% of totalAmount)

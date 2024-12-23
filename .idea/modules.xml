@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Consumer/Consumer.iml" filepath="$PROJECT_DIR$/Consumer/Consumer.iml" />
       <module fileurl="file://$PROJECT_DIR$/Producer/Producer.iml" filepath="$PROJECT_DIR$/Producer/Producer.iml" />
-      <module fileurl="file://$PROJECT_DIR$/e-commerce-platform.iml" filepath="$PROJECT_DIR$/e-commerce-platform.iml" />
     </modules>
   </component>
 </project>

@@ -23,7 +23,7 @@ public class OrderListener {
         this.orderRepository = orderRepository;
     }
 
-    @RabbitListener(queues = "#{@orderQueue}")
+    @RabbitListener(queues = "${consumer.order.queue}")
     public void processOrder(String orderJson) {
         logger.info("Received JSON: {}", orderJson); // Log the raw JSON string
 

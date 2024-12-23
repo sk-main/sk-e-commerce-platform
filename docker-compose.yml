@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"     # RabbitMQ main port
+      - "15672:15672"   # RabbitMQ Management UI
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+
+  producer:
+    image: skedar999/producer:latest
+    container_name: producer
+    depends_on:
+      - rabbitmq
+    environment:
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_RABBITMQ_PORT: 5672
+    ports:
+      - "8081:8081"
+
+  consumer:
+    image: skedar999/consumer:latest
+    container_name: consumer
+    depends_on:
+      - rabbitmq
+    environment:
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_RABBITMQ_PORT: 5672
+    ports:
+      - "8082:8082"
